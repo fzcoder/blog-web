@@ -1,0 +1,117 @@
+.icon-write-24px {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url(../image/icon-write.png);
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+}
+
+.icon-github-24px {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url(https://www.github.com/favicon.ico);
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+}
+
+.icon-QQ-24px {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url(../image/icon-QQ.png);
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+}
+
+.icon-wechat-24px {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url(../image/icon-wechat.png);
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+}
+
+.icon-webo-24px {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url(../image/icon-sina-webo.png);
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+}
+
+
+.icon-github-36px {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background-image: url(../image/icon-github.png);
+    background-size: 36px 36px;
+    background-repeat: no-repeat;
+}
+
+.icon-gitee-36px {
+    display: inline-block;
+    width: 46px;
+    height: 36px;
+    background-image: url(../image/icon-gitee.png);
+    background-size: 46px 36px;
+    background-repeat: no-repeat;
+}
+
+.icon-csdn-36px {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background-image: url(../image/icon-csdn.png);
+    background-size: 36px 36px;
+    background-repeat: no-repeat;
+}
+
+.icon-cnblogs-36px {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background-image: url(../image/icon-cnblogs.png);
+    background-size: 36px 36px;
+    background-repeat: no-repeat;
+}
+
+.icon-top-primary-20px {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url(../image/icon-top-primary.png);
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+}
+
+.icon-link-primary-20px {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url(../image/icon-link-primary.png);
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+}
+
+.icon-like-primary-20px {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url(../image/icon-like-primary.png);
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+}
+
+.icon-logo-primary-64px {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-image: url(../image/icon-article-primary.png);
+    background-size: 40px 40px;
+    background-repeat: no-repeat;
+}

@@ -4,14 +4,21 @@
       <el-col :xs="0" :sm="2" :md="2" :lg="1" :xl="1">
         <!-- ToolBar -->
         <affix :top="60" :bottom="400">
-          <ToolBar :like="count.like"></ToolBar>
+          <ToolBar :like="count.like" :disabled="isToolDisable"></ToolBar>
         </affix>
       </el-col>
       <el-col :xs="24" :sm="16" :md="14" :lg="10" :xl="10">
         <div class="card">
           <!-- 页头 -->
           <el-page-header @back="goBack" content="文章" />
-          <Article :article="article" :author="user" :view="count.view"></Article>
+          <Article v-if="!isNotFound" :article="article" :author="user" :view="count.view"></Article>
+          <div v-if="isNotFound" class="NotFound">
+            <h3 style="color: #909399;">(´⊙ω⊙`)! 文章不存在...</h3>
+            <img src="../../assets/image/404.png" />
+            <div>
+              <el-button size="small" type="primary" round @click="() => { return $router.push('/blog') }">博客</el-button>
+            </div>
+          </div>
         </div>
       </el-col>
       <el-col :xs="0" :sm="6" :md="5" :lg="4" :xl="4">
@@ -57,12 +64,15 @@ export default {
       count: {
         view: 0,
         like: 0
-      }
+      },
+      // 文章是否不存在
+      isNotFound: false,
+      // 工具栏是否不可用
+      isToolDisable: true
     }
   },
   created () {
     this.getArticle()
-    this.hasNewReader()
   },
   methods: {
     // 获取文章信息
@@ -70,10 +80,14 @@ export default {
       const { data: result } = await this.$http.get(
         '/article/' + this.$route.params.id
       )
+      // 显示错误信息
       if (result.status !== 200) {
+        this.isNotFound = true
         return this.$message.error(result.message)
       }
+      this.isToolDisable = false
       this.article = result.data
+      this.hasNewReader()
       this.getUserInfo(this.article.author_id)
       this.getCountInfo(this.article.id)
     },
@@ -145,6 +159,12 @@ export default {
     i {
       margin-right: 5px;
     }
+  }
+}
+.NotFound {
+  text-align: center;
+  img {
+    margin-bottom: 15px;
   }
 }
 </style>

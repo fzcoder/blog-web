@@ -14,6 +14,7 @@
       >
         <el-button
           circle
+          :disabled="disabled"
           icon="icon-link-primary-20px"
           v-clipboard:copy=" 'http://www.frankfang.cn' + this.$route.path "
           v-clipboard:success="onCopy"
@@ -24,7 +25,7 @@
     <el-row class="btn-item">
       <el-badge :value="like" style="margin-top: 10px; padding: 0px;">
         <el-tooltip effect="dark" content="点赞" placement="left">
-          <el-button circle icon="icon-like-primary-20px" @click="dolike()"></el-button>
+          <el-button :disabled="disabled" circle icon="icon-like-primary-20px" @click="dolike()"></el-button>
         </el-tooltip>
       </el-badge>
     </el-row>
@@ -38,6 +39,10 @@ export default {
     like: {
       type: Number,
       default: 0
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   data () {

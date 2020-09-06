@@ -2,13 +2,13 @@
   <div class="article-list">
     <!-- 文章列表 -->
     <div class="article-item" v-for="item in list" :key="item.id">
-      <div class="article-item-content">
-        <div :class="{ 'item-content-pc': !isMobile(), 'item-content-mobile': isMobile() }">
-          <el-link :underline="false" :href=" '/article/' + item.id ">
-            <h3 class="item-title">{{ item.title }}</h3>
-          </el-link>
+      <el-row :gutter="10" class="article-item-content">
+        <el-col :xs="24" :sm="18" :md="18" :lg="16" :xl="16">
+          <a class="item-title" :href=" '/article/' + item.id ">
+            <span>{{ item.title }}</span>
+          </a>
           <p style="font-size: small; color: grey;">简介: {{ item.introduction }}</p>
-          <div>
+          <div class="item-tag">
             <el-tag
               size="small"
               effect="dark"
@@ -18,25 +18,27 @@
               style="margin-right: 8px;"
             >{{ tag }}</el-tag>
           </div>
-          <div style="display: flex; justify-content: space-between;">
-            <p style="font-size: small; color: grey;">
+          <div class="item-status">
+            <p class="item-date">
               <i class="el-icon-time"></i>
               {{ item.date }}
             </p>
-            <div style="display: flex; justify-content: flex-end;">
-              <p style="font-size: small; color: grey;margin-right: 5px;">
+            <div class="item-status-right">
+              <p style="margin-right: 5px;">
                 <i class="el-icon-view"></i>
                 {{ item.view }}
               </p>
-              <p style="font-size: small; color: grey;">
+              <p>
                 <i class="el-icon-star-off"></i>
                 {{ item.like }}
               </p>
             </div>
           </div>
-        </div>
-        <el-image class="item-cover" :src="item.cover" fit="fill" v-if="!isMobile()"></el-image>
-      </div>
+        </el-col>
+        <el-col :xs="0" :sm="6" :md="6" :lg="8" :xl="8">
+          <img class="item-cover" :src="item.cover" />
+        </el-col>
+      </el-row>
     </div>
   </div>
 </template>
@@ -67,30 +69,46 @@ export default {
 
 <style lang="less" scoped>
 .article-item {
-  border-bottom: 1px solid #EBEEF5;
+  border-bottom: 1px solid #ebeef5;
   margin-bottom: 10px;
 }
 .article-item-content {
   background-color: #fff;
-  // border-radius: 10px;
   display: flex;
   justify-content: flex-start;
   margin-bottom: 10px;
+  // 标题
   .item-title {
-    margin: 0px;
+    text-decoration: none;
+    color: #303133;
+    span {
+      font-weight: bold;
+    }
   }
-  .item-content-pc {
-    width: 65%;
-    padding: 0 10px 0 0;
+  .item-title:hover {
+    color: #409eff;
   }
-  .item-content-mobile {
-    width: 100%;
-    padding: 10px;
-  }
+  // 封面
   .item-cover {
-    width: 35%;
-    // border-top-left-radius: 10px;
-    // border-bottom-left-radius: 10px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  // 状态栏
+  .item-status {
+    p {
+      margin-bottom: 0px;
+      font-size: small;
+      color: grey;
+    }
+    display: flex;
+    justify-content: space-between;
+    .item-status-right {
+      display: flex;
+      justify-content: flex-start;
+      float: right;
+    }
   }
 }
 </style>

@@ -1,16 +1,24 @@
 <template>
   <div class="nav">
-    <div class="nav-title">
-      <h4>
-        <i class="icon-write-24px"></i>博客随笔
-      </h4>
-    </div>
-    <div class="nav-item" v-for="category in category.list" :key="category.id">
-      <div v-for="tag in category.children" :key="tag.id" :class="{ 'item-children' : true, 'item-children-active' : isActive(tag.id) }">
-        <el-link :underline="false" icon="el-icon-paperclip" :href=" '/blog?categoryId=' + tag.id ">
-          <span>{{ tag.name }}</span>
-        </el-link>
+    <h4 class="nav-title">
+      <i class="icon-write-24px"></i>博客随笔
+    </h4>
+    <div class="category-item" v-for="category in category.list" :key="category.id">
+      <div class="category-item-title">
+        <i class="el-icon-s-unfold"></i>
+        <span>{{ category.name }}</span>
       </div>
+      <a
+        class="tag-item"
+        v-for="tag in category.children"
+        :key="tag.id"
+        :href=" '/blog?categoryId=' + tag.id "
+      >
+        <div class="tag-item-content">
+          <i class="el-icon-folder"></i>
+          <span>{{ tag.name }}</span>
+        </div>
+      </a>
     </div>
   </div>
 </template>
@@ -24,16 +32,6 @@ export default {
       // 目录
       category: {
         list: []
-      },
-      // 样式
-      style: {
-        tags: [
-          'icon-tag2-primary-24px',
-          'icon-tag2-success-24px',
-          'icon-tag2-warning-24px',
-          'icon-tag2-danger-24px',
-          'icon-tag2-info-24px'
-        ]
       }
     }
   },
@@ -50,10 +48,6 @@ export default {
         return this.$message.error(result.message)
       }
       this.category.list = result.data
-    },
-    // 根据标签查找文章列表
-    isActive (id) {
-      return id === this.$route.query.categoryId
     }
   }
 }
@@ -61,29 +55,35 @@ export default {
 
 <style lang="less" scoped>
 .nav-title {
-  // margin-left: 5px;
-  h4 {
-    align-items: center;
-    display: flex;
-    margin: 0px 0px 10px 0px;
-    i {
-      margin-right: 5px;
-    }
+  align-items: center;
+  display: flex;
+  margin: 0px 0px 10px 0px;
+  i {
+    margin-right: 5px;
   }
 }
-.item-title {
+.category-item-title {
   display: flex;
-  align-content: center;
-}
-.item-children {
+  align-items: center;
+  color: #303133;
+  margin: 10px 0px 10px 0px;
   span {
     font-weight: bold;
-    font-size: medium;
+    font-size: small;
+    margin-left: 2px;
   }
-  padding: 10px;
 }
-.item-children-active {
-  background-color: #FFF;
-  border-radius: 5px;
+.tag-item {
+  text-decoration: none;
+  color: #606266;
+}
+.tag-item-content {
+  padding: 8px;
+  span {
+    margin-left: 5px;
+  }
+}
+.tag-item-content:hover {
+  background-color: #f2f6fc;
 }
 </style>

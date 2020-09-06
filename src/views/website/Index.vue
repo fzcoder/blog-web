@@ -15,8 +15,8 @@
         >
           <el-carousel-item v-for="item in carousel" :key="item.id">
             <div style="text-align: center; width: inherit; height: inherit;">
-              <a :href="item.url">
-                <el-image :src="item.cover" fit="contain"></el-image>
+              <a :href="item.url" target="_blank">
+                <img class="carousel-img" :src="item.cover" />
               </a>
             </div>
           </el-carousel-item>
@@ -103,6 +103,11 @@ export default {
 }
 .el-carousel {
   margin-bottom: 10px;
+  .carousel-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 .link-card {
   text-decoration: none;

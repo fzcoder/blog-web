@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h3 class="info-title">{{ article.title }}</h3>
     <!-- 基本信息 -->
     <div class="info">
       <div class="info-header">
@@ -59,7 +58,7 @@ export default {
 
 <style lang="less" scoped>
 .info {
-  margin-bottom: 20px;
+  margin: 20px 0px 20px 0px;
 }
 .info-title {
   margin-top: 30px;

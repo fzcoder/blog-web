@@ -4,7 +4,7 @@
     <el-backtop :bottom="100" :right="50" v-if="!isMobile()">
       <i class="el-icon-arrow-up"></i>
     </el-backtop>
-    <el-row :gutter="10" type="flex" justify="center">
+    <el-row :gutter="20" type="flex" justify="center">
       <el-col :xs="24" :sm="18" :md="15" :lg="10" :xl="10">
         <!-- 走马灯 -->
         <el-carousel
@@ -25,21 +25,35 @@
       </el-col>
       <el-col :xs="0" :sm="6" :md="5" :lg="4" :xl="4">
         <!-- 关于 -->
-        <el-card shadow="never" body-style="padding: 12px;">
+        <div class="card">
           <UserInfo></UserInfo>
-        </el-card>
-        <!-- 统计 -->
-        <el-card shadow="never" body-style="padding: 12px;" class="nav-right">
-          <Count></Count>
-        </el-card>
+        </div>
         <!-- 导航 -->
-        <el-card shadow="never" body-style="padding: 12px;" class="nav-right">
-          <Shortcut></Shortcut>
-        </el-card>
+        <div class="card">
+          <h4>导航</h4>
+          <a class="link-card" href="/link#博客">
+            <div class="link-card-content color-gradient-NewLife">
+              <i class="icon-blog iconsize-large"></i>
+              <span>博客</span>
+            </div>
+          </a>
+          <a class="link-card" href="/link#平台">
+            <div class="link-card-content color-gradient-MalibuBeach">
+              <i class="icon-platform iconsize-large"></i>
+              <span>平台</span>
+            </div>
+          </a>
+          <a class="link-card" href="/link#教程">
+            <div class="link-card-content color-gradient-TrueSunset">
+              <i class="icon-course iconsize-large"></i>
+              <span>教程</span>
+            </div>
+          </a>
+        </div>
         <!-- 推荐 -->
-          <el-card shadow="never" body-style="padding: 12px;" class="nav-right">
-            <Recommend></Recommend>
-          </el-card>
+        <div class="card">
+          <Recommend></Recommend>
+        </div>
       </el-col>
     </el-row>
   </div>
@@ -48,10 +62,6 @@
 <script>
 // 动态组件
 import Dynamic from '@/components/index/Dynamic.vue'
-// 快速导航组件
-import Shortcut from '@/components/common/Shortcut.vue'
-// 统计组件
-import Count from '@/components/index/Count.vue'
 // 关于组件
 import UserInfo from '@/components/index/UserInfo.vue'
 // 推荐组件
@@ -61,8 +71,6 @@ import Recommend from '@/components/common/Recommend.vue'
 export default {
   name: 'Index',
   components: {
-    Shortcut,
-    Count,
     UserInfo,
     Recommend,
     Dynamic
@@ -87,14 +95,31 @@ export default {
 
 <style lang="less" scoped>
 .container {
-  width: 100%;
-  // width: 60%;
-  // margin-left: 20%;
+  width: inherit;
+  padding: 15px;
 }
 .nav-right {
   margin-top: 10px;
 }
 .el-carousel {
   margin-bottom: 10px;
+}
+.link-card {
+  text-decoration: none;
+  cursor: pointer;
+  color: #fff;
+}
+.link-card-content {
+  padding: 10px;
+  margin: 0 0 10px 0;
+  border-radius: 10px;
+  // 阴影
+  box-shadow: 0px 0px 8px #dcdfe6;
+  display: flex;
+  align-items: center;
+  span {
+    margin: 0 0 0 10px;
+    font-weight: bold;
+  }
 }
 </style>

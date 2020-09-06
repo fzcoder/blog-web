@@ -1,12 +1,13 @@
 <template>
   <div class="recommend">
-    <h4 style="margin: 0px;">
-      <i class="el-icon-s-opportunity"></i> 推荐
+    <h4>
+      推荐
     </h4>
     <div class="recommend-list" style="margin-top: 15px;">
-      <div class="recommend-item" v-for="item in recommend.list" :key="item.id">
+      <div class="recommend-item" v-for="(item, index) in recommend.list" :key="item.id">
         <a class="item-link" :href=" '/article/' + item.id ">
-          <p class="title-content">{{ item.title }}</p>
+          <div style="background-color: #F2F6FC; padding: 1px 5px 1px 5px; margin-right: 5px;">{{ index + 1 }}</div>
+          <span class="title-content">{{ item.title }}</span>
         </a>
         <p class="item-date">
           <i class="el-icon-time"></i>
@@ -63,6 +64,9 @@ export default {
 .item-link {
   cursor: pointer;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: #606266;
 }
 .item-date {
   font-size: small;

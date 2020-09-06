@@ -1,7 +1,7 @@
 <template>
   <div class="footer-content">
     <p>{{ copyright }}</p>
-    <el-link :underline="false" href="http://beian.miit.gov.cn/">
+    <el-link :underline="false" href="http://beian.miit.gov.cn/" target="_blank">
       <p>{{ beianInfo }}</p>
     </el-link>
   </div>

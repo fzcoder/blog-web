@@ -2,41 +2,30 @@
   <div class="header-content">
     <!-- PC端 -->
     <div class="header-content-pc" v-if="!isMobile()">
-      <div class="header-brand">
-        <el-link :underline="false" href="/">
-          <span>{{ brand }}</span>
-        </el-link>
+      <div class="nav-content">
+        <div class="header-brand">
+          <el-link :underline="false" href="/">
+            <span>{{ brand }}</span>
+          </el-link>
+        </div>
+        <!-- 导航 -->
+        <ul class="nav">
+          <li class="nav-item" v-for="item in nav" :key="item.name">
+            <a class="nav-link" :href="item.url">
+              <!--
+              <i :class="item.icon"></i>
+              -->
+              <span>{{ item.name }}</span>
+            </a>
+          </li>
+        </ul>
       </div>
-      <el-menu mode="horizontal" :router="true" menu-trigger="hover" active-text-color="#409EFF">
-        <el-input placeholder="请输入内容" size="small" v-model="input">
-          <el-button slot="append" icon="el-icon-search" size="small" @click="search"></el-button>
-        </el-input>
-        <el-menu-item index="/" class="menu-item">
-          <template slot="title">
-            <i class="el-icon-s-home" style="border-bottom: 0px;"></i>
-            <span style="font-weight: bold;">首页</span>
-          </template>
-        </el-menu-item>
-        <el-menu-item index="/blog" class="menu-item">
-          <template slot="title">
-            <i class="el-icon-edit" style="border-bottom: 0px;"></i>
-            <span style="font-weight: bold;">博客</span>
-          </template>
-        </el-menu-item>
-        <el-menu-item index="/link" class="menu-item">
-          <template slot="title">
-            <i class="el-icon-s-promotion" style="border-bottom: 0px;"></i>
-            <span style="font-weight: bold;">导航</span>
-          </template>
-        </el-menu-item>
-        <el-menu-item index="/about" class="menu-item">
-          <i class="el-icon-info" style="border-bottom: 0px;"></i>
-          <span style="font-weight: bold;">关于</span>
-        </el-menu-item>
-      </el-menu>
+      <el-input placeholder="请输入内容" size="small" v-model="input" style="width: 200px;">
+        <el-button slot="append" icon="el-icon-search" size="small" @click="search"></el-button>
+      </el-input>
     </div>
     <!-- 移动端 -->
-    <div class="header-content-mobile"  v-if="isMobile()">
+    <div class="header-content-mobile" v-if="isMobile()">
       <a href="/">
         <i class="icon-logo-primary-64px"></i>
       </a>
@@ -71,7 +60,13 @@ export default {
       // 菜单
       menu: {
         link: []
-      }
+      },
+      nav: [
+        { name: '首页', url: '/', icon: 'el-icon-s-home' },
+        { name: '博客', url: '/blog', icon: 'el-icon-edit' },
+        { name: '导航', url: '/link', icon: 'el-icon-s-promotion' },
+        { name: '关于', url: '/about', icon: 'el-icon-info' }
+      ]
     }
   },
   methods: {
@@ -104,6 +99,7 @@ export default {
 .header-content-pc {
   width: 100%;
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 .header-content-mobile {
@@ -130,10 +126,10 @@ export default {
   .el-link {
     span {
       margin: 0px;
-      // color: #fff;
-      color: #606266;
+      color: #fff;
+      // color: #606266;
       font-weight: bold;
-      font-size: 18pt;
+      font-size: 21px;
     }
   }
 }
@@ -148,5 +144,42 @@ export default {
     color: #5fb878;
     border-bottom: 2px solid #5fb878;
   }
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  height: 50px;
+}
+// 水平导航栏
+.nav {
+  list-style: none;
+  display: flex;
+  padding: 0px;
+  margin: 0px;
+  align-items: center;
+  // height: 100%;
+}
+.nav-item {
+  display: inline-block;
+  margin: 0 10px 0 10px;
+  // height: 100%;
+  // align-items: center;
+  // padding: 5px;
+  // margin: 10px;
+  // border-bottom: solid 3px transparent;
+}
+.nav-link {
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+  height: 100%;
+  span {
+    margin-left: 5px;
+  }
+}
+.nav-link:hover {
+  // border-bottom: solid 3px #19be6b;
+  border-bottom: solid 3px #409eff;
 }
 </style>

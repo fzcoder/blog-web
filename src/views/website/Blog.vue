@@ -4,7 +4,7 @@
     <el-backtop :bottom="100" :right="50" v-if="!isMobile()">
       <i class="el-icon-arrow-up"></i>
     </el-backtop>
-    <el-row :gutter="10" type="flex" justify="center">
+    <el-row :gutter="20" type="flex" justify="center">
       <el-col :xs="24" :sm="18" :md="15" :lg="10" :xl="10">
         <!-- 文章列表 -->
         <ArticleList :list="article.list"></ArticleList>
@@ -12,9 +12,9 @@
         <el-pagination
           @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
-          :current-page="article.query.pageInfo.pageNum"
+          :current-page="article.query.params.page_num"
           :page-sizes="[5, 10, 15, 20]"
-          :page-size="article.query.pageInfo.pageSize"
+          :page-size="article.query.params.page_size"
           layout="total, sizes, prev, pager, next, jumper"
           :total="article.total"
           background
@@ -23,8 +23,8 @@
         <el-pagination
           @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
-          :current-page="article.query.pageInfo.pageNum"
-          :page-size="article.query.pageInfo.pageSize"
+          :current-page="article.query.params.page_num"
+          :page-size="article.query.params.page_size"
           layout="total, prev, pager, next"
           :total="article.total"
           background small
@@ -62,14 +62,13 @@ export default {
         // 请求参数
         query: {
           // 路径参数
-          params: { category_id: this.$route.query.categoryId },
-          // 分页信息
-          pageInfo: {
+          params: {
             key: '',
-            pageNum: 1,
-            pageSize: 10,
-            orderBy: ['date'],
-            reverse: false
+            page_num: 1,
+            page_size: 10,
+            is_reverse: false,
+            type: 'category',
+            category_id: this.$route.query.categoryId
           }
         }
       }
@@ -81,27 +80,24 @@ export default {
   methods: {
     // 监听pageSize改变的事件
     handleSizeChange (newSize) {
-      this.article.query.pageInfo.pageSize = newSize
+      this.article.query.params.page_size = newSize
       this.getArticleList()
     },
     // 监听页码值改变的事件
     handleCurrentChange (newPage) {
-      this.article.query.pageInfo.pageNum = newPage
+      this.article.query.params.page_num = newPage
       this.getArticleList()
     },
     // 获取文章列表
     async getArticleList () {
-      const { data: result } = await this.$http.post(
-        '/article',
-        this.article.query.pageInfo,
-        { params: this.article.query.params }
-      )
+      const { data: result } = await this.$http.get(
+        '/article', { params: this.article.query.params })
       if (result.status !== 200) {
         return this.$message.error(result.message)
       }
       this.article.list = result.data.records
-      this.article.query.pageInfo.pageNum = result.data.current
-      this.article.query.pageInfo.pageSize = result.data.size
+      this.article.query.params.page_num = result.data.current
+      this.article.query.params.page_size = result.data.size
       this.article.total = result.data.total
     }
   }
@@ -110,7 +106,8 @@ export default {
 
 <style lang="less" scoped>
 .container {
-  width: 100%;
+  width: inherit;
+  padding: 20px;
 }
 .el-pagination {
   margin-top: 10px;

@@ -10,7 +10,7 @@
       <el-col :xs="24" :sm="16" :md="14" :lg="10" :xl="10">
         <div class="card">
           <!-- 页头 -->
-          <el-page-header @back="goBack" content="文章" />
+          <el-page-header @back="goBack" :content="article.title" />
           <Article v-if="!isNotFound" :article="article" :author="user" :view="count.view"></Article>
           <div v-if="isNotFound" class="NotFound">
             <h3 style="color: #909399;">(´⊙ω⊙`)! 文章不存在...</h3>
@@ -140,7 +140,9 @@ export default {
 
 <style lang="less" scoped>
 .container {
-  width: 100%;
+  width: inherit;
+  padding: 10px;
+  background-color: #F2F6FC;
 }
 .card {
   background-color: #fff;

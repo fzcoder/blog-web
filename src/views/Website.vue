@@ -1,20 +1,20 @@
 <template>
-  <el-container>
-    <el-header :class="{ 'el-header-active': isActive }">
+  <div class="container">
+    <header>
       <el-row type="flex" justify="center" style="height: inherit;">
-        <el-col :xs="24" :sm="22" :md="22" :lg="14" :xl="14">
+        <el-col :xs="24" :sm="22" :md="22" :lg="16" :xl="16">
           <Header :brand="websiteInfo.brand"></Header>
         </el-col>
       </el-row>
-    </el-header>
-    <el-main>
+    </header>
+    <main>
       <!-- 路由占位符 -->
       <router-view v-if="isRouterAlive"></router-view>
-    </el-main>
-    <el-footer>
+    </main>
+    <footer>
       <Footer :copyright="websiteInfo.copyright" :beianInfo="websiteInfo.beianInfo"></Footer>
-    </el-footer>
-  </el-container>
+    </footer>
+  </div>
 </template>
 
 <script>
@@ -37,7 +37,7 @@ export default {
   data () {
     return {
       // 是否开启顶部固定效果
-      isActive: false,
+      // isActive: false,
       isRouterAlive: true,
       websiteInfo: {}
     }
@@ -71,7 +71,7 @@ export default {
       })
     },
     // 处理滚动事件
-    handleScroll () {
+    /* handleScroll () {
       const scrollTop =
         window.pageYOffset ||
         document.documentElement.scrollTop ||
@@ -81,7 +81,7 @@ export default {
       } else {
         this.isActive = false
       }
-    },
+    }, */
     isMobile () {
       // /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
       const flag = navigator.userAgent.match(/(phone|pod|iPhone|iPod|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)
@@ -99,16 +99,18 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.el-header {
+header {
+  position: fixed;
   padding: 0px;
-  // background-color: #393d49;
-  background: rgba(255, 255, 255, 0.3);
-  background-color: #ffffff;
-  position: relative;
+  background-color: #000000;
+  // background-color: snow;
   width: 100%;
+  height: 50px;
   z-index: 100;
+  box-shadow: 0px 0px 3px #000;
+  // box-shadow: 0px 0px 3px snow;
 }
-.el-footer {
+footer {
   padding: 0px;
   height: 100%;
   text-align: center;
@@ -120,8 +122,7 @@ export default {
   background: rgba(255, 255, 255, 0.85);
 }
 
-.el-main {
-  background-color: #f2f6fc;
-  padding: 10px;
+main {
+  padding: 50px 0px 0px 0px;
 }
 </style>

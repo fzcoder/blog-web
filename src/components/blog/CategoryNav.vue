@@ -61,11 +61,11 @@ export default {
 
 <style lang="less" scoped>
 .nav-title {
-  margin-left: 5px;
+  // margin-left: 5px;
   h4 {
     align-items: center;
     display: flex;
-    margin: 10px;
+    margin: 0px 0px 10px 0px;
     i {
       margin-right: 5px;
     }

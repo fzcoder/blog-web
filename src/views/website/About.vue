@@ -89,7 +89,9 @@ export default {
 
 <style lang="less" scoped>
 .container {
-  width: 100%;
+  width: inherit;
+  padding: 20px;
+  background-color: #F2F6FC;
 }
 .el-card {
   // background: rgba(255, 255, 255, 0.7);

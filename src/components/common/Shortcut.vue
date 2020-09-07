@@ -1,14 +1,19 @@
 <template>
   <!-- 导航 -->
-  <div>
-    <h4 style="margin: 0px;"><i class="el-icon-s-promotion"></i> 导航</h4>
-    <div>
-      <div v-for="item in link.list" :key="item.id" style="display: flex; align-items: center; margin-top: 15px;">
-        <el-avatar :size="30" :src="item.iconUrl" style="background-color: #FFFFFF; margin-right: 8px;"></el-avatar>
-        <el-link :underline="false" :href="item.linkUrl" target="_blank">
-          <span style="font-weight: bold;">{{ item.name }}</span>
-        </el-link>
-      </div>
+  <div class="link-list">
+    <div
+      v-for="item in link.list"
+      :key="item.id"
+      style="display: flex; align-items: center; margin-top: 15px;"
+    >
+      <el-avatar
+        :size="30"
+        :src="item.iconUrl"
+        style="background-color: #FFFFFF; margin-right: 8px;"
+      ></el-avatar>
+      <el-link :underline="false" :href="item.linkUrl" target="_blank">
+        <span style="font-weight: bold;">{{ item.name }}</span>
+      </el-link>
     </div>
   </div>
 </template>
@@ -35,7 +40,9 @@ export default {
   methods: {
     // 获取快速导航列表
     async getShortcutList () {
-      const { data: result } = await this.$http.get('/link', { params: this.link.query.params })
+      const { data: result } = await this.$http.get('/link', {
+        params: this.link.query.params
+      })
       if (result.status !== 200) {
         return this.$message.error(result.message)
       }
@@ -46,16 +53,4 @@ export default {
 </script>
 
 <style lang="less" scoped>
-/* .el-link {
-  span {
-    margin: 0px;
-    border-bottom: 2px solid transparent;
-  }
-}
-.el-link :hover {
-  span {
-    color: #5FB878;
-    border-bottom: 2px solid #5FB878;
-  }
-} */
 </style>

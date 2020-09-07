@@ -7,13 +7,8 @@
     <el-row :gutter="10" type="flex" justify="center">
       <el-col :xs="24" :sm="18" :md="15" :lg="10" :xl="10">
         <div class="board">
-          <h1 class="title"><i class="el-icon-link"></i> 导航区</h1>
+          <h3 class="title"><i class="el-icon-link"></i> 导航区</h3>
           <p class="introduction">这里整理收藏了一些实用的网站。博客平台、代码托管平台、主流技术框架的官方文档、各种计算机技术的教程网站...</p>
-          <div class="btn-group">
-            <el-button type="primary" size="small" icon="el-icon-s-home">首页</el-button>
-            <el-button type="success" size="small" icon="el-icon-edit">博客</el-button>
-            <el-button type="warning" size="small" icon="el-icon-info">关于</el-button>
-          </div>
         </div>
         <!-- 列表区 -->
         <div class="link-group" v-for="item in category" :key="item.category_id">
@@ -65,7 +60,9 @@ export default {
 
 <style lang="less" scoped>
 .container {
-  width: 100%;
+  width: inherit;
+  padding: 20px;
+  background-color: #F2F6FC;
 }
 .board {
   background-color: #FFF;
@@ -73,9 +70,6 @@ export default {
   padding: 10px;
   .introduction {
     color: #909399;
-  }
-  .btn-group {
-    margin-bottom: 10px;
   }
 }
 </style>

@@ -52,6 +52,7 @@
         </div>
         <!-- 推荐 -->
         <div class="card">
+          <h4 class="nav-title">推荐</h4>
           <Recommend></Recommend>
         </div>
       </el-col>
@@ -100,6 +101,9 @@ export default {
 }
 .nav-right {
   margin-top: 10px;
+}
+.nav-title {
+  margin: 20px 0px 10px 0px;
 }
 .el-carousel {
   margin-bottom: 10px;

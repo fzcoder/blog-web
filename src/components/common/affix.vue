@@ -50,6 +50,6 @@ export default {
 .affix-active {
   position: fixed;
   z-index: 10;
-  top: 60px;
+  top: 50px;
 }
 </style>

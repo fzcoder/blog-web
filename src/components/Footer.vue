@@ -1,9 +1,9 @@
 <template>
   <div class="footer-content">
-    <p>{{ copyright }}</p>
-    <el-link :underline="false" href="http://beian.miit.gov.cn/" target="_blank">
-      <p>{{ beianInfo }}</p>
-    </el-link>
+    <p class="info-copyright">{{ copyright }}</p>
+    <a href="http://beian.miit.gov.cn/" target="_blank">
+      <span class="info-beian">{{ beianInfo }}</span>
+    </a>
   </div>
 </template>
 
@@ -26,8 +26,15 @@ export default {
 <style lang="less" scoped>
 .footer-content {
   margin-top: 10px;
-  p {
-    color: grey; font-size: small; margin: 0px; margin-bottom: 5px;
-  }
+  margin-bottom: 10px;
+}
+.info-copyright {
+  color: grey; font-size: small; margin: 0px; margin-bottom: 5px;
+}
+.info-beian {
+  color: grey; font-size: small;
+}
+a {
+  text-decoration: none;
 }
 </style>

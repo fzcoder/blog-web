@@ -3,19 +3,11 @@
     <el-backtop :bottom="100" :right="50" v-if="!isMobile()">
       <i class="el-icon-arrow-up"></i>
     </el-backtop>
-    <el-row :gutter="10" type="flex" justify="center">
+    <el-row :gutter="20" type="flex" justify="center">
       <el-col :xs="24" :sm="17" :md="16" :lg="10" :xl="10">
-        <div class="board">
-          <h4># 搜索结果 ( 关键字: {{ $route.query.key }} )</h4>
-          <div class="btn-group">
-            <el-button type="primary" size="small" icon="el-icon-s-home">首页</el-button>
-            <el-button type="success" size="small" icon="el-icon-edit">博客</el-button>
-            <el-button type="warning" size="small" icon="el-icon-info">关于</el-button>
-          </div>
-        </div>
         <div class="result-area">
           <!-- 文章 -->
-          <h4>
+          <h4 style="margin-top: 0px;">
             <i class="el-icon-s-unfold"></i> 文章
           </h4>
           <div style="text-align: center;" class="result-empty" v-if="article.isEmpty">
@@ -24,7 +16,9 @@
               <i class="el-icon-search"></i> 搜索结果为空
             </h5>
           </div>
-          <ArticleList :list="article.list"></ArticleList>
+          <div class="result-article">
+            <ArticleList :list="article.list"></ArticleList>
+          </div>
           <el-pagination
             background
             :small="false"
@@ -46,7 +40,9 @@
               <i class="el-icon-search"></i> 搜索结果为空
             </h5>
           </div>
-          <LinkList :list="link.list"></LinkList>
+          <div class="result-link">
+            <LinkList :list="link.list"></LinkList>
+          </div>
           <el-pagination
             background
             :small="false"
@@ -61,12 +57,18 @@
         </div>
       </el-col>
       <el-col :xs="0" :sm="7" :md="6" :lg="4" :xl="4">
-        <el-card shadow="never">
+        <div class="nav-card">
+          <div class="nav-title">
+            <h4>导航</h4>
+          </div>
           <Shortcut></Shortcut>
-        </el-card>
-        <el-card shadow="never" style="margin-top: 20px;">
+        </div>
+        <div class="nav-card">
+          <div class="nav-title">
+            <h4>推荐</h4>
+          </div>
           <Recommend></Recommend>
-        </el-card>
+        </div>
       </el-col>
     </el-row>
   </div>
@@ -188,11 +190,16 @@ export default {
 
 <style lang="less" scoped>
 .container {
-  width: 100%;
+  width: inherit;
+  padding: 20px;
+  // background-color: #F2F6FC;
 }
-.board {
-  background-color: #FFF;
-  padding: 10px;
-  border-radius: 10px;
+.nav-card {
+  margin-bottom: 20px;
+}
+.nav-title {
+  h4 {
+    margin: 0px 0px 5px 0px;
+  }
 }
 </style>

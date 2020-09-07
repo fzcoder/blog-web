@@ -12,9 +12,6 @@
         <ul class="nav">
           <li class="nav-item" v-for="item in nav" :key="item.name">
             <a class="nav-link" :href="item.url">
-              <!--
-              <i :class="item.icon"></i>
-              -->
               <span>{{ item.name }}</span>
             </a>
           </li>
@@ -108,16 +105,8 @@ export default {
   align-items: center;
   display: flex;
   justify-content: space-around;
-}
-.el-menu {
-  border-bottom: 0px;
-  display: flex;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.5);
-  .el-input {
-    width: 200px;
-    margin-right: 15px;
-  }
+  background-color: #F2F6FC;
+  box-shadow: 0px 0px 3px #F2F6FC !important;
 }
 .header-brand {
   display: flex;
@@ -127,7 +116,6 @@ export default {
     span {
       margin: 0px;
       color: #fff;
-      // color: #606266;
       font-weight: bold;
       font-size: 21px;
     }
@@ -158,16 +146,10 @@ export default {
   padding: 0px;
   margin: 0px;
   align-items: center;
-  // height: 100%;
 }
 .nav-item {
   display: inline-block;
   margin: 0 10px 0 10px;
-  // height: 100%;
-  // align-items: center;
-  // padding: 5px;
-  // margin: 10px;
-  // border-bottom: solid 3px transparent;
 }
 .nav-link {
   text-decoration: none;
@@ -179,7 +161,6 @@ export default {
   }
 }
 .nav-link:hover {
-  // border-bottom: solid 3px #19be6b;
   border-bottom: solid 3px #409eff;
 }
 </style>

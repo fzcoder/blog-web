@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div class="article">
+    <h3 class="article-title">{{ article.title }}</h3>
     <!-- 基本信息 -->
     <div class="info">
       <div class="info-header">

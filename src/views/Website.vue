@@ -103,12 +103,10 @@ header {
   position: fixed;
   padding: 0px;
   background-color: #000000;
-  // background-color: snow;
   width: 100%;
   height: 50px;
   z-index: 100;
   box-shadow: 0px 0px 3px #000;
-  // box-shadow: 0px 0px 3px snow;
 }
 footer {
   padding: 0px;

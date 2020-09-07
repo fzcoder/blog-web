@@ -1,20 +1,16 @@
 <template>
-  <div class="recommend">
-    <h4>
-      推荐
-    </h4>
-    <div class="recommend-list" style="margin-top: 15px;">
-      <div class="recommend-item" v-for="(item, index) in recommend.list" :key="item.id">
-        <a class="item-link" :href=" '/article/' + item.id ">
-          <div style="background-color: #F2F6FC; padding: 1px 5px 1px 5px; margin-right: 5px;">{{ index + 1 }}</div>
-          <span class="title-content">{{ item.title }}</span>
-        </a>
-        <p class="item-date">
-          <i class="el-icon-time"></i>
-          {{ item.date }}
-        </p>
+  <div class="recommend-list">
+    <a
+      class="item-link"
+      v-for="item in recommend.list"
+      :key="item.id"
+      :href=" '/article/' + item.id "
+    >
+      <div class="item-content">
+        <i class="el-icon-document"></i>
+        <span class="title-content">{{ item.title }}</span>
       </div>
-    </div>
+    </a>
   </div>
 </template>
 
@@ -49,30 +45,21 @@ export default {
 <style lang="less" scoped>
 .title-content {
   color: #606266;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  border-bottom: 2px solid transparent;
-}
-.title-content :hover {
-  color: #5fb878;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  border-bottom: 2px solid #5fb878;
 }
 .item-link {
-  cursor: pointer;
   text-decoration: none;
-  display: flex;
-  align-items: center;
   color: #606266;
+  // overflow: hidden;
+  // text-overflow: ellipsis;
+  // white-space: nowrap;
 }
-.item-date {
-  font-size: small;
-  color: #606266;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.item-content {
+  padding: 10px 0px 10px 0px;
+  span {
+    margin-left: 5px;
+  }
+}
+.item-content:hover {
+  background-color: #F2F6FC;
 }
 </style>

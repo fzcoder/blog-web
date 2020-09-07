@@ -3,14 +3,14 @@
     <el-row :gutter="10" type="flex" justify="center">
       <el-col :xs="0" :sm="2" :md="2" :lg="1" :xl="1">
         <!-- ToolBar -->
-        <affix :top="60" :bottom="400">
+        <affix :top="0" :bottom="400">
           <ToolBar :like="count.like" :disabled="isToolDisable"></ToolBar>
         </affix>
       </el-col>
       <el-col :xs="24" :sm="16" :md="14" :lg="10" :xl="10">
         <div class="card">
           <!-- 页头 -->
-          <el-page-header @back="goBack" :content="article.title" />
+          <el-page-header @back="goBack" content="文章" />
           <Article v-if="!isNotFound" :article="article" :author="user" :view="count.view"></Article>
           <div v-if="isNotFound" class="NotFound">
             <h3 style="color: #909399;">(´⊙ω⊙`)! 文章不存在...</h3>
@@ -23,11 +23,17 @@
       </el-col>
       <el-col :xs="0" :sm="6" :md="5" :lg="4" :xl="4">
         <!-- 导航 -->
-        <div class="card card-margin-bottom">
+        <div class="nav-card card-margin-bottom">
+          <div class="nav-title">
+            <h4>导航</h4>
+          </div>
           <Shortcut></Shortcut>
         </div>
         <!-- 推荐 -->
-        <div class="card">
+        <div class="nav-card">
+          <div class="nav-title">
+            <h4>推荐</h4>
+          </div>
           <Recommend></Recommend>
         </div>
       </el-col>
@@ -152,15 +158,15 @@ export default {
 .card-margin-bottom {
   margin-bottom: 10px;
 }
+.nav-card {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 12px;
+}
 .nav-title {
-  margin-left: 5px;
+  border-left: 5px solid #409EFF;
   h4 {
-    align-items: center;
-    display: flex;
-    margin: 10px;
-    i {
-      margin-right: 5px;
-    }
+    margin: 0px 0px 0px 5px;
   }
 }
 .NotFound {

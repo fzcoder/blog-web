@@ -13,7 +13,7 @@
     </div>
     <!-- 正文 -->
     <div class="markdown-body">
-      <div class="content" v-html="article.content_html">{{ article.content_html }}</div>
+      <div id="article-content-html" v-html="article.content_html"></div>
     </div>
     <!-- 页底 -->
     <div style="display: flex; justify-content: space-between;">

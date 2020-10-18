@@ -17,9 +17,17 @@
           </li>
         </ul>
       </div>
-      <el-input placeholder="请输入内容" size="small" v-model="input" style="width: 200px;">
-        <el-button slot="append" icon="el-icon-search" size="small" @click="search"></el-button>
-      </el-input>
+      <!-- 搜索框 -->
+      <div class="input-wrapper">
+        <input
+          placeholder="请输入关键字"
+          v-model="input"
+          @keyup.enter="search"
+        />
+        <button class="search-btn" @click="search">
+          <i class="el-icon-search"></i>
+        </button>
+      </div>
     </div>
     <!-- 移动端 -->
     <div class="header-content-mobile" v-if="isMobile()">
@@ -162,5 +170,29 @@ export default {
 }
 .nav-link:hover {
   border-bottom: solid 3px #409eff;
+}
+.input-wrapper {
+  input {
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 14px;
+    color: #303133;
+    width: 200px;
+    line-height: 20px;
+  }
+  .search-btn {
+    border: none;
+    outline: none;
+    background: #fff;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+  }
+  display: inline;
+  background-color: #f2f6fc;
+  padding: 3px 3px 3px 9px;
+  border-radius: 18px;
 }
 </style>

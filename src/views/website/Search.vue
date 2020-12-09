@@ -99,10 +99,10 @@ export default {
         isEmpty: false,
         query: {
           key: this.$route.query.key,
-          pageNum: 1,
-          pageSize: 10,
-          orderBy: ['title'],
-          reverse: false
+          page_num: 1,
+          page_size: 10,
+          is_reverse: false,
+          type: 'search'
         },
         list: []
       },
@@ -129,7 +129,7 @@ export default {
   },
   methods: {
     getArticleList () {
-      this.$http.post('/article', this.article.query).then(res => {
+      this.$http.get('/article', { params: this.article.query }).then(res => {
         const result = res.data.data
         /* if (result.status !== 200) {
           return this.$message({
@@ -139,8 +139,8 @@ export default {
         } */
         this.article.list = result.records
         this.article.total = result.total
-        this.article.query.pageNum = result.current
-        this.article.query.pageSize = result.size
+        this.article.query.page_num = result.current
+        this.article.query.page_size = result.size
         if (result.total === 0) {
           this.article.isEmpty = true
         }

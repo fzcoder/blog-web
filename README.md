@@ -7,7 +7,7 @@
 该项目为个人博客网站 Web 端，采用 [Vue](https://github.com/vuejs/vue) 框架编写，集成了[vue router](https://github.com/vuejs/vue-router) 和 [axios](https://github.com/axios/axios)，并且采用 [element](https://github.com/ElemeFE/element) 作为UI组件库，需要配合服务端以及后台管理端。
 
 - 项目的服务端地址为: [https://github.com/fzcoder/blog-server](https://github.com/fzcoder/blog-server)
-- 项目的后台管理端地址为: [https://github.com/fzcoder/blog-web](https://github.com/fzcoder/blog-web)
+- 项目的后台管理端地址为: [https://github.com/fzcoder/blog-admin](https://github.com/fzcoder/blog-admin)
 
 **注意**
 
@@ -100,7 +100,7 @@ $ cnpm i
 axios.defaults.baseURL = 'http://<host>:<port>/api'
 ```
 
-将其中的`host`和`port`更改为你本地服务端的地址和端口号
+将其中的`host`和`port`更改为你本地服务端的地址和端口号即可
 
 #### 4、运行项目
 
